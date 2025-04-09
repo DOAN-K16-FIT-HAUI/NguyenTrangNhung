@@ -15,21 +15,20 @@ public class CheckEmailTest extends LoginBaseTest {
         loginPage = new LoginPage(driver);
     }
 
-    @Test(description = "Kiểm thử validate Email khi nhập email sai định dạng")
-    @AllureId("106")
+    @Test(description = "Kiểm thử validate Email khi để trống")
+    @AllureId("104")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
-    @Story("Hiển thị thông báo lỗi khi nhập sai định dạng Email")
+    @Story("Hiển thị thông báo lỗi khi bỏ trống Email")
     @Severity(SeverityLevel.NORMAL)
-    public void testValidateEmail() {
-        loginPage.enterEmail("abc");
+    public void testValidateEmailIsRequired() {
+        loginPage.clickEmailField();
         loginPage.clickPasswordField();
         loginPage.clickEmailField();
 
-        String actualMessage = loginPage.getEmailInvalidMessage();
-        String expectedMessage = "Email không đúng, vui lòng nhập lại.";
+        String expectedEmailMsg = "Vui lòng nhập email.";
+        String actualEmailMsg = loginPage.getEmailErrorMessage();
 
-        Assert.assertEquals(actualMessage, expectedMessage, "Message lỗi email sai định dạng chưa đúng!");
+        Assert.assertEquals(actualEmailMsg, expectedEmailMsg, "Message lỗi Email không đúng!");
     }
 }
-

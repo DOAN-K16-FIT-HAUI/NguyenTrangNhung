@@ -12,14 +12,14 @@ public class RegisterPage {
     private WebDriverWait wait;
 
     private By nameField = By.xpath("//input[@placeholder='Họ tên']");
-    private By emailField = By.name("email");
-    private By passwordField = By.name("password");
+    private By emailField = By.xpath("//input[@placeholder='Email']");
+    private By passwordField = By.xpath("//input[@placeholder='Mật khẩu']");
     private By registerButton = By.xpath("//button[.//p[text()='Đăng ký'] and not(contains(@class, 'Button_disabled'))]");
     //Tiêu đề trang Đăng ký
     private By registerTitle = By.xpath("//h1[contains(text(),'Đăng ký tài khoản')]");
 
     //thông báo lỗi khi đăng ký thất bại
-    private By errorMessage = By.xpath("//div[contains(@class, 'Toastify__toast-body')]");
+    private By errorMessage = By.xpath("//div[@role='alert' and contains(., 'Email đã tồn tại')]");
 
     //thông báo lỗi khi bỏ trống
     private By nameErrorMessage = By.xpath("(//div[@class='form__group'])[1]//p[@class='form__error']");

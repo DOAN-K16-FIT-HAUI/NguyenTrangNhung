@@ -15,21 +15,20 @@ public class ValidatePasswordTest extends LoginBaseTest {
         loginPage = new LoginPage(driver);
     }
 
-    @Test(description = "Kiểm thử validate Password khi để trống")
-    @AllureId("105")
+    @Test(description = "Kiểm thử validate Password khi nhập password sai định dạng")
+    @AllureId("107")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
-    @Story("Hiển thị thông báo lỗi khi bỏ trống Password")
+    @Story("Hiển thị thông báo lỗi khi nhập sai định dạng Password")
     @Severity(SeverityLevel.NORMAL)
-    public void testValidateEmailIsRequired() {
+    public void testValidateEmail() {
         loginPage.enterEmail("trangnhung29072003@gmail.com");
-        loginPage.clickPasswordField();
+        loginPage.enterPassword("123");
         loginPage.clickEmailField();
 
-        String expectedPasswordMsg = "Vui lòng nhập mật khẩu.";
-        String actualPasswordMsg = loginPage.getPasswordErrorMessage();
+        String actualMessage = loginPage.getPasswordInvalidMessage();
+        String expectedMessage = "Mật khẩu phải chứa ít nhất 8 ký tự và 1 ký tự đặc biệt @-_";
 
-        Assert.assertEquals(actualPasswordMsg, expectedPasswordMsg, "Message lỗi Password không đúng!");
+        Assert.assertEquals(actualMessage, expectedMessage, "Message lỗi password sai định dạng chưa đúng!");
     }
 }
-
