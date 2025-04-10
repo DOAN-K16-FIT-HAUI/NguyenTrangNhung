@@ -16,7 +16,7 @@ public class LoginWrongPasswordTest extends LoginBaseTest {
     }
 
     @Test(description = "Kiểm thử đăng nhập thất bại khi nhập sai Password")
-    @AllureId("103")
+    @AllureId("105")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
     @Story("Người dùng nhập đúng email nhưng sai password")
@@ -26,14 +26,10 @@ public class LoginWrongPasswordTest extends LoginBaseTest {
         loginPage.enterPassword("#Nhung12");
         loginPage.clickLoginButton();
 
-        // Chờ thông báo lỗi xuất hiện
-        boolean isErrorDisplayed = loginPage.isErrorMessageDisplayed();
-        if (!isErrorDisplayed) {
-            loginPage.attachScreenshot();
-        }
-        Assert.assertTrue(isErrorDisplayed, "Không tìm thấy thông báo lỗi!");
+        Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Không tìm thấy thông báo lỗi!");
 
-        // Kiểm tra nội dung thông báo lỗi
+        captureScreenshot(); // Screenshot manual
+
         String actualMessage = loginPage.getErrorMessageText();
         String expectedMessage = "Tài khoản hoặc mật khẩu không chính xác";
         Assert.assertEquals(actualMessage, expectedMessage, "Nội dung thông báo lỗi không đúng!");

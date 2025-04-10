@@ -4,9 +4,7 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 import pages.RegisterPage;
-import utils.LoginBaseTest;
 import utils.RegisterBaseTest;
 
 public class RegisteredEmailTest extends RegisterBaseTest {
@@ -18,7 +16,7 @@ public class RegisteredEmailTest extends RegisterBaseTest {
     }
 
     @Test(description = "Kiểm thử đăng ký thất bại khi nhập sai email đã đăng ký")
-    @AllureId("108")
+    @AllureId("109")
     @Epic("Chức năng đăng ký")
     @Feature("Đăng ký")
     @Story("Người dùng nhập email đã đăng ký tài khoản")
@@ -32,7 +30,6 @@ public class RegisteredEmailTest extends RegisterBaseTest {
         // Kiểm tra hiển thị thông báo lỗi
         Assert.assertTrue(registerPage.isErrorMessageDisplayed(), "Không tìm thấy thông báo lỗi!");
 
-        registerPage.attachScreenshot();
 
         // Kiểm tra nội dung thông báo lỗi
         String actualMessage = registerPage.getErrorMessageText();

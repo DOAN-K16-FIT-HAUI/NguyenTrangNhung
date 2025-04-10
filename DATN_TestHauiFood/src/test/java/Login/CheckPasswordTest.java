@@ -16,7 +16,7 @@ public class CheckPasswordTest extends LoginBaseTest {
     }
 
     @Test(description = "Kiểm thử validate Password khi để trống")
-    @AllureId("105")
+    @AllureId("102")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
     @Story("Hiển thị thông báo lỗi khi bỏ trống Password")
@@ -29,6 +29,6 @@ public class CheckPasswordTest extends LoginBaseTest {
         String expectedPasswordMsg = "Vui lòng nhập mật khẩu.";
         String actualPasswordMsg = loginPage.getPasswordErrorMessage();
 
-        Assert.assertEquals(actualPasswordMsg, expectedPasswordMsg, "Message lỗi Password không đúng!");
+        Assert.assertEquals(actualPasswordMsg, expectedPasswordMsg, "Message lỗi bỏ trống Password không đúng!");
     }
 }

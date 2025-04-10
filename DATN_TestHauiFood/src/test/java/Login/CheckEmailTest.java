@@ -16,7 +16,7 @@ public class CheckEmailTest extends LoginBaseTest {
     }
 
     @Test(description = "Kiểm thử validate Email khi để trống")
-    @AllureId("104")
+    @AllureId("101")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
     @Story("Hiển thị thông báo lỗi khi bỏ trống Email")
@@ -29,6 +29,6 @@ public class CheckEmailTest extends LoginBaseTest {
         String expectedEmailMsg = "Vui lòng nhập email.";
         String actualEmailMsg = loginPage.getEmailErrorMessage();
 
-        Assert.assertEquals(actualEmailMsg, expectedEmailMsg, "Message lỗi Email không đúng!");
+        Assert.assertEquals(actualEmailMsg, expectedEmailMsg, "Message lỗi bỏ trống Email không đúng!");
     }
 }

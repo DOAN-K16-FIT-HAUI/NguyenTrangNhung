@@ -18,7 +18,7 @@ public class LoginTest extends LoginBaseTest {
     }
 
     @Test(description = "Kiểm thử đăng nhập thành công")
-    @AllureId("101")
+    @AllureId("103")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
     @Story("Người dùng đăng nhập thành công với thông tin hợp lệ")

@@ -11,14 +11,17 @@ public class RegisterPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+
     private By nameField = By.xpath("//input[@placeholder='Họ tên']");
     private By emailField = By.xpath("//input[@placeholder='Email']");
     private By passwordField = By.xpath("//input[@placeholder='Mật khẩu']");
     private By registerButton = By.xpath("//button[.//p[text()='Đăng ký'] and not(contains(@class, 'Button_disabled'))]");
     //Tiêu đề trang Đăng ký
-    private By registerTitle = By.xpath("//h1[contains(text(),'Đăng ký tài khoản')]");
+    private By registerTitle = By.xpath("//h1[text()='Đăng ký']");
 
-    //thông báo lỗi khi đăng ký thất bại
+    //thông báo đăng ký thành công
+    private By registerSuccess = By.xpath("//div[@role='alert']//div[text()='Đăng ký thành công, vui lòng xác nhận email']");
+    //thông báo lỗi khi Email đã tồn tại
     private By errorMessage = By.xpath("//div[@role='alert' and contains(., 'Email đã tồn tại')]");
 
     //thông báo lỗi khi bỏ trống
@@ -26,7 +29,8 @@ public class RegisterPage {
     private By emailErrorMessage = By.xpath("(//div[@class='form__group'])[2]//p[@class='form__error']");
     private By passwordErrorMessage = By.xpath("(//div[@class='form__group'])[3]//p[@class='form__error']");
 
-    //thoong báo lỗi khi sai định dạng
+    //thông báo lỗi khi sai định dạng
+    private By nameInvalidMessage = By.xpath("//div[@role='alert']//div[text()='Họ tên từ 3 đến 50 ký tự']");
     private By emailInvalidMessage = By.xpath("//p[text()='Email không đúng, vui lòng nhập lại.']");
     private By passwordInvalidMessage = By.xpath("//p[text()='Mật khẩu phải chứa ít nhất 8 ký tự và 1 ký tự đặc biệt @-_']");
 
@@ -53,7 +57,16 @@ public class RegisterPage {
             WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(nameErrorMessage));
             return errorElement.getText();
         } catch (TimeoutException e) {
-            return "Không có lỗi Họ tên";
+            return "Không có lỗi bỏ trống Họ tên";
+        }
+    }
+    public String getNameInvalidMessage() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(nameInvalidMessage));
+            return errorElement.getText();
+        } catch (TimeoutException e) {
+            return "Không có lỗi sai định dạng password";
         }
     }
 
@@ -74,7 +87,7 @@ public class RegisterPage {
             WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(emailErrorMessage));
             return errorElement.getText();
         } catch (TimeoutException e) {
-            return "Không có lỗi email";
+            return "Không có lỗi bỏ trống email";
         }
     }
 
@@ -105,7 +118,7 @@ public class RegisterPage {
             WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordErrorMessage));
             return errorElement.getText();
         } catch (TimeoutException e) {
-            return "Không có lỗi password";
+            return "Không có lỗi bỏ trống password";
         }
     }
 
@@ -119,14 +132,32 @@ public class RegisterPage {
         }
     }
 
-    @Step("Nhấn vào nút đăng nhập")
+    @Step("Nhấn vào nút đăng ký")
     public HomePage clickRegisterButton() {
         WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(registerButton));
         loginBtn.click();
         return new HomePage(driver);
     }
-
-    @Step("Kiểm tra thông báo lỗi hiển thị")
+    //kiểm tra thông báo đăng ký thành công
+    @Step("Kiểm tra thông báo đăng ký thành công hiển thị")
+    public boolean isSuccessMessageDisplayed(){
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(registerSuccess)).isDisplayed();
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+    @Step("Lấy nội dung thông báo thành công")
+    public String getSuccessMessageText() {
+        try {
+            WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(registerSuccess));
+            return errorElement.getText();
+        } catch (TimeoutException e) {
+            return "Không tìm thấy thông báo thành công!";
+        }
+    }
+    //kiểm tra thông báo lỗi đăng ký thất bại
+    @Step("Kiểm tra thông báo đăng ký thất bại hiển thị")
     public boolean isErrorMessageDisplayed() {
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).isDisplayed();
@@ -135,7 +166,7 @@ public class RegisterPage {
         }
     }
 
-    @Step("Lấy nội dung thông báo lỗi")
+    @Step("Lấy nội dung thông báo đăng ký thất bại")
     public String getErrorMessageText() {
         try {
             WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
@@ -145,8 +176,25 @@ public class RegisterPage {
         }
     }
 
-    @Attachment(value = "Ảnh chụp màn hình lỗi", type = "image/png")
-    public byte[] attachScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
+//    //kiểm tra thông báo lỗi khi nhập Họ tên ít hơn 3 ký tự
+//    @Step("Kiểm tra thông báo lỗi định dạng họ tên hiển thị")
+//    public boolean isNameInvalidMessageDisplayed() {
+//        try {
+//            return wait.until(ExpectedConditions.visibilityOfElementLocated(nameInvalidMessage)).isDisplayed();
+//        } catch (TimeoutException e) {
+//            return false;
+//        }
+//    }
+//
+//    @Step("Lấy nội dung thông báo lỗi định dạng Họ tên")
+//    public String getNameInvalidMessageText() {
+//        try {
+//            WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(nameInvalidMessage));
+//            return errorElement.getText();
+//        } catch (TimeoutException e) {
+//            return "Không tìm thấy thông báo lỗi!";
+//        }
+//    }
+
+
 }

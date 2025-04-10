@@ -1,22 +1,34 @@
 package Register;
 
-import pages.LoginPage;
-import org.openqa.selenium.By;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.RegisterPage;
 import utils.LoginBaseTest;
 
 public class RegisterPageTest extends LoginBaseTest {
 
-    @Test
+    @Test(description = "Kiểm tra truy cập trang Đăng ký từ Login page")
+    @AllureId("110")
+    @Epic("Chức năng đăng ký")
+    @Feature("Đăng ký")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Người dùng có thể truy cập trang Đăng ký")
+    @Description("Thực hiện truy cập trang Đăng ký từ Login page")
     public void testAccessRegisterPage() {
         LoginPage loginPage = new LoginPage(driver);
+        RegisterPage registerPage = new RegisterPage(driver);
 
-        // Step 1: Từ Login page click qua Register page
+        Allure.step("Click button Đăng ký trên trang Login");
         loginPage.clickRegister();
 
-        // Step 2: Kiểm tra hiển thị tiêu đề Đăng ký
-        By registerTitle = By.xpath("//h1[contains(text(),'Đăng ký')]");
-        Assert.assertTrue(driver.findElement(registerTitle).isDisplayed(), "Không hiển thị tiêu đề Đăng ký");
+        Allure.step("Verify tiêu đề Đăng ký hiển thị");
+        try {
+            Assert.assertTrue(registerPage.isRegisterTitleDisplayed(), "Không hiển thị tiêu đề Đăng ký");
+        } catch (AssertionError e) {
+            captureScreenshot();
+            throw e;  // Bắt buộc để TestNG nhận fail
+        }
     }
 }

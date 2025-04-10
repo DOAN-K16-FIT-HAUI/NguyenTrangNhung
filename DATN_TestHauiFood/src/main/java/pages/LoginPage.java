@@ -14,10 +14,10 @@ public class LoginPage {
     private By emailField = By.name("email");
     private By passwordField = By.name("password");
     private By loginButton = By.xpath("//button[contains(@class, 'Button_primary__9MLUH') and not(contains(@class, 'Button_disabled'))]");
-    private By registerLink = By.xpath("//a[text()='Đăng ký']");
+    private By registerLink = By.xpath("//a[@class='SignIn_login__link__OrO5U' and contains(text(),'Đăng ký')]");
 
     //thông báo lỗi khi login thất bại
-    private By errorMessage = By.xpath("//div[contains(@class, 'Toastify__toast-body')]");
+    private By errorMessage = By.xpath("//div[text()='Tài khoản hoặc mật khẩu không chính xác']");
     //thông báo lỗi khi bỏ trống
     private By emailErrorMessage = By.xpath("(//div[@class='form__group'])[1]//p[@class='form__error']");
     private By passwordErrorMessage = By.xpath("(//div[@class='form__group'])[2]//p[@class='form__error']");
@@ -92,9 +92,10 @@ public class LoginPage {
     }
 
     //Click Đăng ký
-    public void clickRegister() {
-        driver.findElement(registerLink).click();
-    }
+        public void clickRegister() {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(registerLink)).click();
+        }
+
 
     @Step("Nhấn vào nút đăng nhập")
     public HomePage clickLoginButton() {
@@ -122,8 +123,4 @@ public class LoginPage {
         }
     }
 
-    @Attachment(value = "Ảnh chụp màn hình lỗi", type = "image/png")
-    public byte[] attachScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
 }
