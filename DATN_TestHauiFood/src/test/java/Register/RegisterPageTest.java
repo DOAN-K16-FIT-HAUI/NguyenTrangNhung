@@ -2,13 +2,20 @@ package Register;
 
 import io.qameta.allure.*;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.RegisterPage;
 import utils.LoginBaseTest;
 
 public class RegisterPageTest extends LoginBaseTest {
+    private LoginPage loginPage;
+    private RegisterPage registerPage;
 
+    @BeforeMethod
+    public void setUpTest() {
+        loginPage = new LoginPage(driver);
+    }
     @Test(description = "Kiểm tra truy cập trang Đăng ký từ Login page")
     @AllureId("110")
     @Epic("Chức năng đăng ký")
@@ -17,8 +24,7 @@ public class RegisterPageTest extends LoginBaseTest {
     @Story("Người dùng có thể truy cập trang Đăng ký")
     @Description("Thực hiện truy cập trang Đăng ký từ Login page")
     public void testAccessRegisterPage() {
-        LoginPage loginPage = new LoginPage(driver);
-        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage = new RegisterPage(driver);
 
         Allure.step("Click button Đăng ký trên trang Login");
         loginPage.clickRegister();
@@ -27,8 +33,7 @@ public class RegisterPageTest extends LoginBaseTest {
         try {
             Assert.assertTrue(registerPage.isRegisterTitleDisplayed(), "Không hiển thị tiêu đề Đăng ký");
         } catch (AssertionError e) {
-            captureScreenshot();
-            throw e;  // Bắt buộc để TestNG nhận fail
+            throw e;  //Bắt buộc để TestNG nhận fail
         }
     }
 }

@@ -1,9 +1,6 @@
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -12,8 +9,10 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 public class RegisterBaseTest {
     protected WebDriver driver;
@@ -30,23 +29,17 @@ public class RegisterBaseTest {
     @AfterMethod
     public void tearDown(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
-            captureScreenshotOnFailure();
+            String methodName = result.getMethod().getMethodName();
+            try {
+                Files.write(Paths.get("target/allure-results/" + methodName + ".png"),
+                        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         if (driver != null) {
             driver.quit();
         }
-    }
-
-    @Step("Chụp screenshot khi test fail")
-    @Attachment(value = "Screenshot on Failure", type = "image/png")
-    public byte[] captureScreenshotOnFailure() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
-
-    @Step("Chụp screenshot thủ công")
-    @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] captureScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

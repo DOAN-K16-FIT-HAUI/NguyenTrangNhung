@@ -28,8 +28,6 @@ public class LoginWrongPasswordTest extends LoginBaseTest {
 
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Không tìm thấy thông báo lỗi!");
 
-        captureScreenshot(); // Screenshot manual
-
         String actualMessage = loginPage.getErrorMessageText();
         String expectedMessage = "Tài khoản hoặc mật khẩu không chính xác";
         Assert.assertEquals(actualMessage, expectedMessage, "Nội dung thông báo lỗi không đúng!");

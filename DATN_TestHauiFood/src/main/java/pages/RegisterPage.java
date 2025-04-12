@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +9,6 @@ import java.time.Duration;
 public class RegisterPage {
     private WebDriver driver;
     private WebDriverWait wait;
-
 
     private By nameField = By.xpath("//input[@placeholder='Họ tên']");
     private By emailField = By.xpath("//input[@placeholder='Email']");
@@ -195,6 +193,5 @@ public class RegisterPage {
 //            return "Không tìm thấy thông báo lỗi!";
 //        }
 //    }
-
 
 }

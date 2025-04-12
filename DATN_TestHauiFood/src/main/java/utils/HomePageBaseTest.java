@@ -1,7 +1,6 @@
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class LoginBaseTest {
+public class HomePageBaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
@@ -23,7 +22,7 @@ public class LoginBaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.get("https://hauifood.com/auth/login");
+        driver.get("https://hauifood.com/");
     }
 
     @AfterMethod
