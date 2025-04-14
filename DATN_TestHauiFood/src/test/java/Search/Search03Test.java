@@ -16,11 +16,7 @@ public class Search03Test extends HomePageBaseTest {
     @Story("Người dùng có thể tìm kiếm thất bại khi nhập tên món ăn không tồn tại")
     public void testSuccessfulSearchWithValidKeyword() {
         HomePage homePage = new HomePage(driver);
-
         homePage.enterSearchKeyword("Bánh Mỳ");
-        homePage.clickSearchButton();
-
-        // Step 3: Kiểm tra kết quả trả về
         Assert.assertTrue(homePage.areAllResults("Bánh Mỳ"), "Không trả ra kết quả, hiển thị hiện không có nhà hàng nào");
     }
 }

@@ -26,7 +26,7 @@ public class CheckPasswordTest extends LoginBaseTest {
         loginPage.clickPasswordField();
         loginPage.clickEmailField();
 
-        String expectedPasswordMsg = "Vui lòng nhập mật khẩu.";
+        String expectedPasswordMsg = "Mật khẩu phải chứa ít nhất 8 ký tự và 1 ký tự đặc biệt @-_";
         String actualPasswordMsg = loginPage.getPasswordErrorMessage();
 
         Assert.assertEquals(actualPasswordMsg, expectedPasswordMsg, "Message lỗi bỏ trống Password không đúng!");

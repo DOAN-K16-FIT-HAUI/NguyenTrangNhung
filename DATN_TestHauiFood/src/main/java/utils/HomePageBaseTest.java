@@ -22,7 +22,7 @@ public class HomePageBaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.get("https://hauifood.com/");
+        driver.get("https://hauifood.vn/");
     }
 
     @AfterMethod

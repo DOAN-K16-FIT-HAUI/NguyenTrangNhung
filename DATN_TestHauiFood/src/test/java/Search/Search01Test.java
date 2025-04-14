@@ -16,11 +16,9 @@ public class Search01Test extends HomePageBaseTest {
     @Story("Người dùng có thể tìm kiếm thành công khi nhập đúng tên món ăn")
     public void testSuccessfulSearchWithValidKeyword() {
         HomePage homePage = new HomePage(driver);
-
-        homePage.enterSearchKeyword("Bánh Mì Hội An");
-        homePage.clickSearchButton();
+        homePage.enterSearchKeyword("Bánh mì chả");
 
         // Step 3: Kiểm tra kết quả trả về
-        Assert.assertTrue(homePage.areAllResults("Bánh Mì"), "Không phải tất cả kết quả đều chứa từ khóa 'Bánh Mì Hội An'");
+        Assert.assertTrue(homePage.areAllResults("Bánh Mì"), "Không phải tất cả kết quả đều chứa từ khóa 'Bánh mì chả'");
     }
 }

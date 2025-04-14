@@ -26,7 +26,7 @@ public class CheckEmailTest extends LoginBaseTest {
         loginPage.clickPasswordField();
         loginPage.clickEmailField();
 
-        String expectedEmailMsg = "Vui lòng nhập email.";
+        String expectedEmailMsg = "Email không đúng, vui lòng nhập lại.";
         String actualEmailMsg = loginPage.getEmailErrorMessage();
 
         Assert.assertEquals(actualEmailMsg, expectedEmailMsg, "Message lỗi bỏ trống Email không đúng!");

@@ -13,8 +13,8 @@ public class LoginPage {
 
     private By emailField = By.name("email");
     private By passwordField = By.name("password");
-    private By loginButton = By.xpath("//button[contains(@class, 'Button_primary__9MLUH') and not(contains(@class, 'Button_disabled'))]");
-    private By registerLink = By.xpath("//a[@class='SignIn_login__link__OrO5U' and contains(text(),'Đăng ký')]");
+    private By loginButton = By.xpath("//button[contains(@class, 'Button_primary') and not(contains(@class, 'Button_disabled'))]");
+    private By registerLink = By.xpath("//a[contains(@class, 'SignIn_login') and text()='Đăng ký']");
     //thông báo khi đăng nhập thất bại
     private By errorMessage = By.xpath("//div[text()='Tài khoản hoặc mật khẩu không chính xác']");
     //thông báo khi bỏ trống trường

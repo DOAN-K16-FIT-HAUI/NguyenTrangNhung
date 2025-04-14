@@ -22,9 +22,9 @@ public class RegisterSuccessTest extends RegisterBaseTest {
     @Story("Người dùng đăng ký thành công với thông tin hợp lệ")
     @Severity(SeverityLevel.CRITICAL)
     public void testRegisterSuccess() {
-        registerPage.enterName("Nhung");
-        registerPage.enterEmail("nhung2k3@gmail.com");
-        registerPage.enterPassword("#Nhung09061983");
+        registerPage.enterName("Minh");
+        registerPage.enterEmail("minhnh@gmail.com");
+        registerPage.enterPassword("#Minh123");
         registerPage.clickRegisterButton();
 
         // Kiểm tra hiển thị thông báo thành công
@@ -32,7 +32,7 @@ public class RegisterSuccessTest extends RegisterBaseTest {
 
         // Kiểm tra nội dung thông báo thành công
         String actualMessage = registerPage.getSuccessMessageText();
-        String expectedMessage = "Đăng ký thành công, vui lòng xác nhận email";
+        String expectedMessage = "Đăng ký tài khoản thành công";
         Assert.assertEquals(actualMessage, expectedMessage, "Nội dung thông báo thành công không đúng!");
     }
 }

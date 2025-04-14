@@ -14,7 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
-public class RegisterBaseTest {
+public class ProductListBaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
@@ -23,7 +23,7 @@ public class RegisterBaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.get("https://hauifood.vn/auth/signup");
+        driver.get("https://hauifood.vn/products");
     }
 
     @AfterMethod

@@ -18,7 +18,7 @@ public class LogoutTest extends LoginBaseTest {
     public void TC_Logout_Success() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("trangnhung29072003@gmail.com");
-        loginPage.enterPassword("#Nhung09061983");
+        loginPage.enterPassword("#Nhung123");
         loginPage.clickLoginButton();
 
         HomePage homePage = new HomePage(driver);

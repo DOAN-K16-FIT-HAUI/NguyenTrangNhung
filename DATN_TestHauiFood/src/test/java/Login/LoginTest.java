@@ -17,26 +17,18 @@ public class LoginTest extends LoginBaseTest {
         loginPage = new LoginPage(driver);
     }
 
-    @Test(description = "Kiểm thử đăng nhập thành công")
+    @Test(description = "Kiểm thử đăng nhập thành công và hiển thị thông báo")
     @AllureId("103")
     @Epic("Chức năng đăng nhập")
     @Feature("Đăng nhập")
-    @Story("Người dùng đăng nhập thành công với thông tin hợp lệ")
+    @Story("Người dùng đăng nhập thành công với thông tin hợp lệ và hiển thị toast")
     @Severity(SeverityLevel.CRITICAL)
-
     public void testLoginSuccess() {
         loginPage.enterEmail("trangnhung29072003@gmail.com");
-        loginPage.enterPassword("#Nhung09061983");
+        loginPage.enterPassword("#Nhung123");
         homePage = loginPage.clickLoginButton();
 
-        // Đợi trang chủ tải xong
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Assert.assertTrue(homePage.isHomePageDisplayed(), "Đăng nhập không thành công, không chuyển hướng về trang chủ!");
+        String toastMessage = homePage.getSuccessLoginMessage();
+        Assert.assertEquals(toastMessage.trim(), "Đăng nhập thành công", "Thông báo không đúng hoặc không hiển thị.");
     }
-
 }
