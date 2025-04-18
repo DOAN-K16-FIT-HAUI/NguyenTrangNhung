@@ -1,5 +1,6 @@
 package ProductDetails;
 
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ProductListPage;
@@ -7,7 +8,12 @@ import utils.ProductListBaseTest;
 
 public class ProductDetailsTest extends ProductListBaseTest {
 
-    @Test
+    @Test(description = "User xem chi tiết sản phẩm thành công")
+    @AllureId("113")
+    @Epic("Chức năng Xem chi tiết sản phẩm")
+    @Feature("Xem chi tiết sản phẩm")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Người dùng có thể xem chi tiết sản phẩm thành công")
     public void testViewProductDetailDrawer() {
         ProductListPage productListPage = new ProductListPage(driver);
 

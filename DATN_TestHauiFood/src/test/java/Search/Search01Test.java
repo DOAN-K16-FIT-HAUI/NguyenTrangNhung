@@ -14,11 +14,11 @@ public class Search01Test extends HomePageBaseTest {
     @Feature("Tìm kiếm")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Người dùng có thể tìm kiếm thành công khi nhập đúng tên món ăn")
-    public void testSuccessfulSearchWithValidKeyword() {
+    public void searchWithValidKeyword() {
         HomePage homePage = new HomePage(driver);
         homePage.enterSearchKeyword("Bánh mì chả");
 
         // Step 3: Kiểm tra kết quả trả về
-        Assert.assertTrue(homePage.areAllResults("Bánh Mì"), "Không phải tất cả kết quả đều chứa từ khóa 'Bánh mì chả'");
+        Assert.assertTrue(homePage.areAllResults("Bánh mì chả"), "Không phải tất cả kết quả đều chứa từ khóa 'Bánh mì chả'");
     }
 }

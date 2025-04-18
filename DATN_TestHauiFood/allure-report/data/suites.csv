@@ -1,2 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","1995","testHomePageTitle","Surefire suite","Thu Mar 27 15:21:38 ICT 2025","passed","Thu Mar 27 15:21:40 ICT 2025","org.example.WebsiteTest","Surefire test","org.example.WebsiteTest","testHomePageTitle"

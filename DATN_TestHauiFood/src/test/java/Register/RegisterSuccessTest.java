@@ -23,7 +23,7 @@ public class RegisterSuccessTest extends RegisterBaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void testRegisterSuccess() {
         registerPage.enterName("Minh");
-        registerPage.enterEmail("minhnh@gmail.com");
+        registerPage.enterEmail("hoangminh22@gmail.com");
         registerPage.enterPassword("#Minh123");
         registerPage.clickRegisterButton();
 

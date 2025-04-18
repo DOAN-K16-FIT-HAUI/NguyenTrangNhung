@@ -14,9 +14,9 @@ public class Search03Test extends HomePageBaseTest {
     @Feature("Tìm kiếm")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Người dùng có thể tìm kiếm thất bại khi nhập tên món ăn không tồn tại")
-    public void testSuccessfulSearchWithValidKeyword() {
+    public void searchWithInvalidKeyword() {
         HomePage homePage = new HomePage(driver);
         homePage.enterSearchKeyword("Bánh Mỳ");
-        Assert.assertTrue(homePage.areAllResults("Bánh Mỳ"), "Không trả ra kết quả, hiển thị hiện không có nhà hàng nào");
+        Assert.assertTrue(homePage.noResultDisplayed(), "Không hiển thị 'Không tìm thấy kết quả'!");
     }
 }

@@ -14,7 +14,7 @@ public class Search02Test extends HomePageBaseTest {
     @Feature("Tìm kiếm")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Người dùng có thể tìm kiếm thành công khi nhập gần đúng tên món ăn")
-    public void testSuccessfulSearchWithValidKeyword() {
+    public void searchWithValidKeyword() {
         HomePage homePage = new HomePage(driver);
         homePage.enterSearchKeyword("Bánh Mì");
         // Step 3: Kiểm tra kết quả trả về

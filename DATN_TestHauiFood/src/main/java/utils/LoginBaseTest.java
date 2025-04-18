@@ -27,18 +27,20 @@ public class LoginBaseTest {
 
     @AfterMethod
     public void tearDown(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            String methodName = result.getMethod().getMethodName();
-            try {
-                Files.write(Paths.get("target/allure-results/" + methodName + "_Fail.png"),
-                        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         if (driver != null) {
-            driver.quit();
+            try {
+                if (result.getStatus() == ITestResult.FAILURE) {
+                    String methodName = result.getMethod().getMethodName();
+                    try {
+                        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                        Files.write(Paths.get("target/allure-results/" + methodName + "_Fail.png"), screenshot);
+                    } catch (Exception e) {
+                        System.out.println("Không thể chụp ảnh màn hình: " + e.getMessage());
+                    }
+                }
+            } finally {
+                driver.quit();
+            }
         }
     }
 }
