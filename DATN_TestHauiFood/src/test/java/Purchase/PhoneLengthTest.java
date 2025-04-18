@@ -27,7 +27,7 @@ public class PhoneLengthTest extends LoginBaseTest {
     @Test(description = "Người dùng nhập vào số điện thoại không hợp lệ về độ dài")
     @AllureId("Purchase-5")
     @Epic("Chức năng Đặt hàng")
-    @Feature("Validate số điện thoại")
+    @Feature("Validate fields")
     @Story("Người dùng đặt đơn hàng thất bại khi nhập số điện thoại không hợp lệ về độ dài")
     @Severity(SeverityLevel.NORMAL)
     public void testPhoneLength() {

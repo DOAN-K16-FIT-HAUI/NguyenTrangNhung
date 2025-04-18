@@ -27,7 +27,7 @@ public class PhoneInvalidTest extends LoginBaseTest {
     @Test(description = "Người dùng nhập vào số điện thoại không hợp lệ")
     @AllureId("Purchase-6")
     @Epic("Chức năng Đặt hàng")
-    @Feature("Validate số điện thoại")
+    @Feature("Validate fields")
     @Story("Người dùng đặt đơn hàng thất bại khi nhập số điện thoại không hợp lệ")
     @Severity(SeverityLevel.CRITICAL)
     public void testPhoneInvalid() {

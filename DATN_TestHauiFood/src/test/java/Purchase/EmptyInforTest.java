@@ -27,7 +27,7 @@ public class EmptyInforTest extends LoginBaseTest {
     @Test(description = "Kiểm tra thông báo lỗi khi người dùng để trống tất cả các thông tin đặt hàng")
     @AllureId("Purchase-7")
     @Epic("Chức năng Đặt hàng")
-    @Feature("Validate số điện thoại")
+    @Feature("Validate fields")
     @Story("Người dùng để trống tất cả các thông tin đặt hàng")
     @Severity(SeverityLevel.CRITICAL)
     public void purchaseWithWalletFail() {
