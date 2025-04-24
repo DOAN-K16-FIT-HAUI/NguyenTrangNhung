@@ -12,14 +12,12 @@ public class CancelOrderTest extends LoginBaseTest {
     private HomePage homePage;
     private ProductListPage productListPage;
     private ProfilePage profilePage;
-    private OrderPage orderPage;
 
     @BeforeMethod
     public void setUpTest() {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         productListPage = new ProductListPage(driver);
-        orderPage = new OrderPage(driver);
         profilePage = new ProfilePage(driver);
     }
 
