@@ -12,7 +12,7 @@ public class Search01Test extends HomePageBaseTest {
     @AllureId("116")
     @Epic("Chức năng tìm kiếm")
     @Feature("Tìm kiếm")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     @Story("Người dùng có thể tìm kiếm thành công khi nhập đúng tên món ăn")
     public void searchWithValidKeyword() {
         HomePage homePage = new HomePage(driver);

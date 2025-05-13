@@ -26,7 +26,7 @@ public class ViewOrderListTest extends LoginBaseTest {
     }
     @Test(description = "Người dùng xem danh sách các đơn mua ở từng trạng thái")
     @AllureId("ListOrders-2")
-    @Epic("Chức năng Quản lý đơn hàng")
+    @Epic("Chức năng Xem danh sách đơn hàng")
     @Feature("Xem danh sách đơn hàng")
     @Story("Người dùng xem các đơn hàng đã mua trước đó theo từng trạng thái")
     @Severity(SeverityLevel.NORMAL)

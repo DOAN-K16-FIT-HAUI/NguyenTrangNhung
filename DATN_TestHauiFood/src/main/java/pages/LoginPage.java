@@ -102,4 +102,8 @@ public class LoginPage {
             return false;
         }
     }
+    public By err = By.xpath("//div[@role='alert']");
+    public String getErrLock(){
+        return getTextIfVisible(err, "Không có thông báo lỗi");
+    }
 }
