@@ -28,6 +28,7 @@ public class AddUserTest extends ManagementBaseTest {
         managementPage.enterPassword("#Haui123");
         managementPage.clickLoginButton();
         userPage.clickUserManagementMenu();
+        //chờ
         Thread.sleep(1000);
         userPage.clickAddUserBtn();
         userPage.setUserName("Test");
